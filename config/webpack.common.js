@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var helpers = require('./helpers');
 
 module.exports = {
@@ -37,7 +38,11 @@ module.exports = {
                 test: /\.css$/,
                 include: helpers.root('src', 'app'),
                 loader: 'raw'
-            }
+            },
+            { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+            { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+            // Bootstrap 4
+            { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
         ]
     },
 
@@ -48,6 +53,13 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'src/index.html'
+        }),
+        new ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery',
+            "Tether": 'tether',
+            "window.Tether": "tether"
         })
     ]
 };
