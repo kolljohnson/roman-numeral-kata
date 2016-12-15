@@ -7,7 +7,7 @@ describe('App', () => {
        it('gives an error when invalid input is given', () => {
           let result = browser.findElement(by.css('p'));
           browser.element(by.buttonText('Convert')).click();
-          expect(result.getText()).toBe("Error, please enter a number or valid Roman numeral");
+          expect(result.getText()).toBe("Error, please enter a number or valid Roman numberNumeral");
        });
 
        it('returns I when 1 is return', () => {

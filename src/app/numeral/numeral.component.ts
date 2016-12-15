@@ -8,26 +8,26 @@ import { Roman } from './roman';
 })
 
 export class NumeralComponent {
-    public numeral: string = "";
+    public numberNumeral: string = "";
     public result: string = "";
 
 
     convert():void {
         this.result= "";
         // Arabic number to Roman Numeral
-        if(parseInt(this.numeral) > 0) {
+        if(parseInt(this.numberNumeral) > 0) {
             this.arabicToRoman();
-        // Roman Numeral to number (also check for valid numeral)
-        } else if (this.numeral.match('[MDCLXVI]+') != null &&
-          this.numeral.match('(VV)+|(LL)+|(DD)+') == null) {
+        // Roman Numeral to number (also check for valid numberNumeral)
+        } else if (this.numberNumeral.match('[MDCLXVI]+') != null &&
+          this.numberNumeral.match('(VV)+|(LL)+|(DD)+') == null) {
             this.romanToArabic();
         } else {
-            this.result = "Error, please enter a number or valid Roman numeral";
+            this.result = "Error, please enter a number or valid Roman numberNumeral";
         }
     }
 
     arabicToRoman():void {
-        let currentNumber: number = parseInt(this.numeral);
+        let currentNumber: number = parseInt(this.numberNumeral);
         const roman: Roman = new Roman();
 
         for(let i in roman.roman) {
@@ -45,16 +45,16 @@ export class NumeralComponent {
 
         // loop through keys in roman object
         for(let i = 0; i <= keys.length; i++) {
-            // check if the next character in numeral matches roman
-            while(this.numeral.indexOf(keys[i]) === 0) {
+            // check if the next character in numberNumeral matches roman
+            while(this.numberNumeral.indexOf(keys[i]) === 0) {
                 arabic += roman.roman[keys[i]];
-                this.numeral = this.numeral.replace(keys[i], '');
+                this.numberNumeral = this.numberNumeral.replace(keys[i], '');
             }
         }
 
         // accounts for inputs like XXC
-        if (this.numeral.length > 0) {
-           this.result = 'Error, please enter a number or valid Roman numeral';
+        if (this.numberNumeral.length > 0) {
+           this.result = 'Error, please enter a number or valid Roman numberNumeral';
         } else {
             this.result = arabic.toString();
         }
