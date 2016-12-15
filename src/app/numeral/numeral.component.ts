@@ -17,7 +17,8 @@ export class NumeralComponent {
         // lookup table of roman numerals and respective values
         if(parseInt(this.numeral) > 0) {
             this.arabicToRoman();
-        } else if (this.numeral.match('[MDCLXVI]+') != null) {
+        } else if (this.numeral.match('[MDCLXVI]+') != null &&
+          this.numeral.match('(VV)+|(LL)+|(DD)+') == null) {
             this.romanToArabic();
         } else {
             this.result = "Error, please enter a number or valid Roman numeral";
@@ -27,6 +28,7 @@ export class NumeralComponent {
     arabicToRoman():void {
         let currentNumber: number = parseInt(this.numeral);
         const roman: Roman = new Roman();
+
         for(let i in roman.roman) {
             while(currentNumber >= roman.roman[i]) {
                 this.result += i;
@@ -39,6 +41,7 @@ export class NumeralComponent {
         const roman: Roman = new Roman();
         let keys = Object.keys(roman.roman);
         let arabic: number = 0;
+
         // loop through keys in roman object
         for(let i = 0; i <= keys.length; i++) {
             // check if the next character in numeral matches roman
