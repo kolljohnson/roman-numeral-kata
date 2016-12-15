@@ -51,6 +51,12 @@ export class NumeralComponent {
                 this.numeral = this.numeral.replace(keys[i], '');
             }
         }
-        this.result = arabic.toString();
+
+        // accounts for inputs like XXC
+        if (this.numeral.length > 0) {
+           this.result = 'Error, please enter a number or valid Roman numeral';
+        } else {
+            this.result = arabic.toString();
+        }
     }
 }

@@ -14,6 +14,7 @@ describe('App', () => {
           let result = browser.findElement(by.css('p'));
           let numeral = browser.findElement(by.model('numeral'));
           browser.element(by.buttonText('Convert')).click();
+          expect(result.getText()).toBe('I');
        });
    })
 });
