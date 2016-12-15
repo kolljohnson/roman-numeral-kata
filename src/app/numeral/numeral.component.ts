@@ -17,8 +17,10 @@ export class NumeralComponent {
         // lookup table of roman numerals and respective values
         if(parseInt(this.numeral) > 0) {
             this.arabicToRoman();
-        } else {
+        } else if (this.numeral.match('[MDCLXVI]+') != null) {
             this.romanToArabic();
+        } else {
+            this.result = "Error, please enter a number or valid Roman numeral";
         }
     }
 
