@@ -34,6 +34,17 @@ export class NumeralComponent {
     }
 
     romanToArabic():void {
-
+        const roman: Roman = new Roman();
+        let keys = Object.keys(roman.roman);
+        let arabic: number = 0;
+        // loop through keys in roman object
+        for(let i = 0; i <= keys.length; i++) {
+            // check if the next character in numeral matches roman
+            while(this.numeral.indexOf(keys[i]) === 0) {
+                arabic += roman.roman[keys[i]];
+                this.numeral = this.numeral.replace(keys[i], '');
+            }
+        }
+        this.result = arabic.toString();
     }
 }
