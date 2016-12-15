@@ -12,10 +12,11 @@ export class NumeralComponent {
 
 
     convert():void {
+        this.result= "";
         let roman = {V: 5, IV: 4, I: 1};
         let currentNumber: number = parseInt(this.numeral);
         for(let i in roman) {
-            while(currentNumber === roman[i]) {
+            while(currentNumber >= roman[i]) {
                 this.result += i;
                 currentNumber -= roman[i];
             }
