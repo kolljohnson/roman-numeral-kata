@@ -17,7 +17,7 @@ export class NumeralComponent {
         // Arabic number to Roman Numeral
         if(parseInt(this.numberNumeral) > 0) {
             this.arabicToRoman();
-        // Roman Numeral to number (also check for valid numberNumeral)
+        // Roman Numeral to number (also check for valid Roman numeral)
         } else if (this.numberNumeral.match('[MDCLXVI]+') != null &&
           this.numberNumeral.match('(VV)+|(LL)+|(DD)+') == null) {
             this.romanToArabic();
